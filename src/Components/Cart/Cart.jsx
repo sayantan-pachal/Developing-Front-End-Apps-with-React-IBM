@@ -50,7 +50,7 @@ function Cart() {
                 {/* Details */}
                 <div className="flex-1 text-center md:text-left">
                   <h4 className="text-xl font-bold text-green-900">
-                    {item.name}
+                    {item.name} <span className="text-green-800">({item.category} Plant)</span>
                   </h4>
                   <p className="text-green-700">
                     ₹{item.price} × {item.qty}
