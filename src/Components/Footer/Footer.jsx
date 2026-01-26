@@ -4,7 +4,7 @@ function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-8 text-center space-y-3">
         
         <h3 className="text-lg font-semibold text-white">
-          🌱 Paradise Nursery
+          🌿 Paradise Nursery
         </h3>
 
         <p className="text-sm text-gray-300">
