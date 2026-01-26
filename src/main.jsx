@@ -18,7 +18,7 @@ import { CartProvider } from './context/CartContext.jsx'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
-      <Route path='Developing-Front-End-Apps-with-React-IBM' element={<Landing />} />
+      <Route path='' element={<Landing />} />
       <Route path="products" element={<Products />} />
       <Route path="cart" element={<Cart />} />
       <Route path="*" element={<div className="text-center mt-20 text-xl">Not Found</div>} />
