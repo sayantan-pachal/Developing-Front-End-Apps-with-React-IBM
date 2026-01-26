@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux"
+
 import { Link } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 import { ShoppingCart } from "lucide-react";
@@ -6,15 +6,12 @@ import { ShoppingCart } from "lucide-react";
 function Header() {
   const { totalItems } = useCart();
 
-  const reduxStatus = useSelector(state => state.dummy.reduxEnabled)
-
   return (
     <header className="sticky top-0 z-50 bg-gradient-to-r from-green-500 via-emerald-500 to-teal-500 shadow-lg">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         
         {/* Logo */}
         {/* Redux enabled flag (for rubric proof) */}
-        <span className="hidden">{reduxStatus.toString()}</span>
         <Link
           to="/products"
           className="text-2xl font-extrabold text-white tracking-wide"
