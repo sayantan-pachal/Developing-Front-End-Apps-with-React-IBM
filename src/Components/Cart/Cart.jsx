@@ -6,7 +6,7 @@ function Cart() {
 
   return (
     <section className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 px-6 py-12">
-      
+
       {/* Page Title */}
       <h2 className="text-4xl font-extrabold text-center text-green-900 mb-10">
         🛒 Your Shopping Cart
@@ -98,9 +98,13 @@ function Cart() {
               </button>
             </Link>
 
-            <button className="px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-full shadow hover:scale-105 transition-transform">
+            <button
+              onClick={() => alert("Checkout coming soon 🚧")}
+              className="px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-full shadow hover:scale-105 transition-transform"
+            >
               Checkout
             </button>
+
           </div>
         </>
       )}
