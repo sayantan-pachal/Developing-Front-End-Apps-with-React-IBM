@@ -28,5 +28,4 @@ Welcome to **Paradise Nursery**, a responsive and modern front-end shopping webp
 ---
 
 Author
-
 **Sayantan Pachal**
