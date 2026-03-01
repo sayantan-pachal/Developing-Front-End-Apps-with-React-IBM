@@ -2,21 +2,37 @@ import { Link } from "react-router-dom";
 
 function Landing() {
   return (
-    <section
-      className="min-h-screen bg-cover bg-center relative flex items-center"
+    <section className="min-h-screen bg-cover bg-center relative flex items-center"
       style={{
         backgroundImage:
           "url('/images/paradise-nursery.avif')",
-      }}
-    >
+      }}>
+
       {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/50"></div>
+      <div className="absolute inset-0 bg-black/50 flex flex-col justify-end">
+        <div className="text-center mb-4">
+          <p className="text-xs text-gray-400">
+            © {new Date().getFullYear()} Paradise Nursery. All rights reserved.
+          </p>
+          <p className="text-gray-400 text-xs">
+            Created by{" "}
+            <a
+              href="https://sayantanpachal.vercel.app"
+              target="_blank"
+              rel="noreferrer"
+              className="text-gray-400 hover:underline"
+            >
+              Sayantan Pachal
+            </a>
+          </p>
+        </div>
+      </div>
 
       {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
-        
+
         {/* Left Content */}
-        <div className="text-white">
+        <div className="text-white md:text-left text-center">
           <h1 className="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">
             Welcome To <br />
             <span className="text-green-400">Paradise Nursery</span>
@@ -34,7 +50,7 @@ function Landing() {
         </div>
 
         {/* Right Content */}
-        <div className="text-white text-sm md:text-base leading-relaxed bg-black/30 p-6 rounded-xl backdrop-blur-sm">
+        <div className="text-white text-justify text-sm md:text-base leading-relaxed bg-black/30 p-6 rounded-xl backdrop-blur-sm">
           <p className="mb-4">
             Welcome to <strong>Paradise Nursery</strong>, where green meets serenity.
             At Paradise Nursery, we are passionate about bringing nature closer
