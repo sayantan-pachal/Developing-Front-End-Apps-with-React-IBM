@@ -1,0 +1,34 @@
+@keyframes toastDrop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -40px) scale(0.95);
+    filter: brightness(0.7);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate(-50%, 5px) scale(1.02);
+    filter: brightness(1.15);
+  }
+
+  100% {
+    transform: translate(-50%, 0) scale(1);
+    filter: brightness(1);
+  }
+}
+
+.animate-toastDrop {
+  animation: toastDrop 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes toastGlow {
+  0% { box-shadow: 0 0 0 rgba(255,255,255,0); }
+  60% { box-shadow: 0 0 25px rgba(255,255,255,0.35); }
+  100% { box-shadow: 0 6px 20px rgba(0,0,0,0.25); }
+}
+
+.animate-toastDrop {
+  animation:
+    toastDrop 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    toastGlow 0.6s ease-out;
+}

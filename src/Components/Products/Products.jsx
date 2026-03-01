@@ -1,11 +1,34 @@
+import { useState } from "react";
 import plants from "../../data/plants";
 import { useCart } from "../../context/CartContext";
-import { Minus, Plus } from "lucide-react";
+import { Plus, Minus, ChevronRight } from "lucide-react";
+import './button.css'; // for the "Show more" button animation
 
 function Products() {
   const { cart, addToCart, updateQty } = useCart();
 
   const categories = ["Indoor", "Medicinal", "Outdoor"];
+
+  const [loading, setLoading] = useState(false);
+  const [toast, setToast] = useState(null); // "success" | "error" | null
+
+  const showToast = (type) => {
+    setToast(type);
+
+    setTimeout(() => {
+      setToast(null);
+    }, 4000);
+  };
+
+  const handleClick = () => {
+    setLoading(true);
+
+    // simulate async work (API call, page load, etc.)
+    setTimeout(() => {
+      setLoading(false);
+      showToast("error"); // SAME toast style as ContactForm
+    }, 2000);
+  };
 
   return (
     <section className="min-h-screen bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 px-6 py-12">
@@ -34,7 +57,7 @@ function Products() {
                     <img
                       src={plant.image}
                       alt={plant.name}
-                      className="w-full h-52 object-cover rounded-t-3xl"
+                      className="w-auto h-64 object-cover rounded-t-xl mx-auto mt-4"
                     />
 
                     {/* Content */}
@@ -86,6 +109,23 @@ function Products() {
           </div>
         </div>
       ))}
+      <div className="mt-12 flex flex-col items-center gap-6">
+        <button
+          onClick={handleClick}
+          disabled={loading}
+          className={`px-8 py-4 flex items-center gap-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-full shadow transition-transform ${loading ? "opacity-70 cursor-not-allowed" : "hover:scale-105"}`}
+        >
+          {loading ? "Loading..." : <>Show more <ChevronRight /></>}
+        </button>
+        <p className="text-center text-green-700 italic">
+          Can't find your favorite plant? Contact us to request new additions!
+        </p>
+      </div>
+      {toast === "error" && (
+        <div className="fixed top-20 left-1/2 -translate-x-1/2  bg-[linear-gradient(90deg,#f53123,#60a5fa)] text-white px-4 py-3 rounded-xl shadow-lg font-semibold animate-toastDrop">
+          Something went wrong ❌ Please try again
+        </div>
+      )}
     </section>
   );
 }

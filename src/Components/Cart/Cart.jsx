@@ -1,8 +1,31 @@
+import { useState } from "react";
 import { Link } from "react-router-dom"
 import { useCart } from "../../context/CartContext"
+import './../Products/button.css'; // for the "Checkout" button animation and toast notification
 
 function Cart() {
   const { cart, updateQty, removeItem, totalItems, totalPrice } = useCart()
+
+  const [loading, setLoading] = useState(false);
+  const [toast, setToast] = useState(null); // "success" | "error" | null
+
+  const showToast = (type) => {
+    setToast(type);
+
+    setTimeout(() => {
+      setToast(null);
+    }, 4000);
+  };
+
+  const handleClick = () => {
+    setLoading(true);
+
+    // simulate async work (API call, page load, etc.)
+    setTimeout(() => {
+      setLoading(false);
+      showToast("error"); // SAME toast style as ContactForm
+    }, 2000);
+  };
 
   return (
     <section className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50 px-6 py-12">
@@ -99,14 +122,20 @@ function Cart() {
             </Link>
 
             <button
-              onClick={() => alert("Checkout coming soon 🚧")}
-              className="px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-full shadow hover:scale-105 transition-transform"
+              onClick={handleClick}
+              disabled={loading}
+              className={`px-8 py-4 flex items-center gap-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-semibold rounded-full shadow transition-transform ${loading ? "opacity-70 cursor-not-allowed" : "hover:scale-105"}`}
             >
-              Checkout
+              {loading ? "Processing..." : " Checkout"}
             </button>
 
           </div>
         </>
+      )}
+      {toast === "error" && (
+        <div className="fixed top-20 left-1/2 -translate-x-1/2  bg-[linear-gradient(90deg,#f53123,#60a5fa)] text-white px-4 py-3 rounded-xl shadow-lg font-semibold animate-toastDrop">
+          Checkout coming soon 🚧
+        </div>
       )}
     </section>
   )
